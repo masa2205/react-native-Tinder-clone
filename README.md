@@ -31,6 +31,7 @@ pod install
 ```
 
 - TouchableOpacity 追加
+- SafeAreaView 追加
 
 エラー
 
@@ -48,3 +49,14 @@ pod install
 [bash]
 $ react-native run-ios
 [/bash]
+<br>
+
+Navigation-画面遷移-
+
+```
+$ npm install @react-navigation/native-stack
+$ npm install react-native-gesture-handler
+
+cd ics
+pod install
+```

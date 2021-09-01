@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-export default LikeKeepScreen = () => {
+export default HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>hello</Text>
+      <Text>Hello World</Text>
     </View>
   );
 };

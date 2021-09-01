@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-export default ChatScreens = () => {
+export default LikeKeepScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>hello</Text>
+      <Text>LikeKeep</Text>
     </View>
   );
 };
