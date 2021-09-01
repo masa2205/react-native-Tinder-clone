@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, ImageBackground} from 'react-native';
+import ImageBottomBar from './ImageBottomBar';
 
 export default MainImage = () => {
   return (
@@ -8,7 +9,9 @@ export default MainImage = () => {
         style={styles.Image}
         source={{
           uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }}></ImageBackground>
+        }}>
+        <ImageBottomBar />
+      </ImageBackground>
     </View>
   );
 };
@@ -23,5 +26,6 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 10,
     overflow: 'hidden',
+    justifyContent: 'flex-end',
   },
 });
