@@ -1,10 +1,11 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import MainImage from '../components/MainImage';
 
 export default HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Hello World</Text>
+      <MainImage />
     </View>
   );
 };
