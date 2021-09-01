@@ -1,19 +1,11 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import BottomBar from './src/components/BottomBar';
+import {NavigationContainer} from '@react-navigation/native';
+import AppNavigator from './src/navigation/AppNavigator';
 
 export default App = () => {
   return (
-    <View style={styles.container}>
-      <BottomBar />
-    </View>
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
