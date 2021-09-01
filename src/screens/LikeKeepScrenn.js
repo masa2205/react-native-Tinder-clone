@@ -1,11 +1,10 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import BottomBar from './src/components/BottomBar';
 
-export default App = () => {
+export default LikeKeepScreen = () => {
   return (
     <View style={styles.container}>
-      <BottomBar />
+      <Text>hello</Text>
     </View>
   );
 };
