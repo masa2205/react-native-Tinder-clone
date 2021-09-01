@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-export default Profilescreen = () => {
+export default HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>Home</Text>
     </View>
   );
 };

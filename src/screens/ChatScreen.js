@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-export default Profilescreen = () => {
+export default ChatScreens = () => {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>Chat</Text>
     </View>
   );
 };
