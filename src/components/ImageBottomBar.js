@@ -5,13 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 export default ImageBottomBar = () => {
   return (
     <View>
-      <View style={styles.nameAgeContainer}>
-        <Text style={styles.name}>Masa</Text>
-        <Text style={styles.age}>Masa</Text>
-      </View>
-      <View>
-        <Text style={styles.bio}>Masa</Text>
-      </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.reloadButton}>
           <Icon name="refresh" color="yellow" size={30} style={styles.icon} />
@@ -34,27 +27,6 @@ export default ImageBottomBar = () => {
 };
 
 const styles = StyleSheet.create({
-  nameAgeContainer: {
-    flexDirection: 'row',
-  },
-  name: {
-    color: 'white',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginHorizontal: 10,
-  },
-  age: {
-    color: 'white',
-    fontSize: 25,
-    paddingTop: 5,
-  },
-  bio: {
-    color: 'white',
-    fontSize: 20,
-    lineHeight: 25,
-    marginHorizontal: 10,
-    paddingBottom: 5,
-  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
