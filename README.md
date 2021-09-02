@@ -60,3 +60,7 @@ $ npm install react-native-gesture-handler
 cd ics
 pod install
 ```
+
+```
+$ npm install react-native-reanimated@next
+```
