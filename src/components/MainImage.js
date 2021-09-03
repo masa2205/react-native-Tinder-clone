@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, ImageBackground} from 'react-native';
 import ImageBottomBar from './ImageBottomBar';
+import 'react-native-gesture-handler';
 
 export default MainImage = props => {
   const {name, image, age, bio} = props.user;
