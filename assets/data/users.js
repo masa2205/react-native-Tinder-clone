@@ -18,7 +18,8 @@ export default [
   {
     id: '3',
     name: 'Hikaru',
-    image: 'https://www.pakutaso.com/shared/img/thumb/takebe2182601_TP_V.jpg ',
+    image:
+      'https://www.pakutaso.com/shared/img/thumb/tokyo0720IMGL7095_TP_V.jpg',
     age: '25',
     bio: '看護師',
   },
