@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text, ImageBackground} from 'react-native';
+import {View, StyleSheet, Text, ImageBackground} from 'react-native';
 import ImageBottomBar from './ImageBottomBar';
 import 'react-native-gesture-handler';
 
