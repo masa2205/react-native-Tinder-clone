@@ -1,6 +1,6 @@
-export const addMatch = ({user}) => {
+export const addLike = ({likeUser}) => {
   return {
-    type: 'ADD_MATCH',
-    user,
+    type: 'ADD_LIKE',
+    likeUser: likeUser,
   };
 };

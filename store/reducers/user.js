@@ -1,13 +1,13 @@
 const initialState = {
-  users: [],
+  likeUsers: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_MATCH':
+    case 'ADD_LIKE':
       return {
         ...state,
-        users: [...state.users, action.users],
+        likeUsers: [...state.likeUsers, action.likeUser],
       };
     default:
       return state;

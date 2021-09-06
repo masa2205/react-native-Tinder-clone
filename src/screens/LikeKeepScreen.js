@@ -1,16 +1,21 @@
 import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, Image, FlatList} from 'react-native';
 import users from '../../assets/data/users';
+import {useSelector} from 'react-redux'
 
-const MatchesScreen = () => {
+export default LikeKeepScreen = () => {
+
+  const user = useSelector(state => state.user)
+  const {likeUsers} = user;
+
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.container}>
         <Text style={{fontWeight: 'bold', fontSize: 24, color: '#F63A6E'}}>
           New Matches
         </Text>
-        <View style={styles.users}>
-          {users.map(user => (
+        <View style={styles.users} data={likeUsers}>
+          {likeUsers.map(user => (
             <View style={styles.user} key={user.id}>
               <Image source={{uri: user.image}} style={styles.image} />
             </View>
@@ -50,5 +55,3 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
 });
-
-export default MatchesScreen;
