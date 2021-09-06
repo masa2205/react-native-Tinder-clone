@@ -14,6 +14,8 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 import {PanGestureHandler} from 'react-native-gesture-handler';
+import {useDispatch} from 'react-redux';
+import {addLike} from '../../store/actions/user';
 
 export default HomeScreen = () => {
   const {width: screenWidth} = useWindowDimensions();
@@ -22,10 +24,17 @@ export default HomeScreen = () => {
   const [nextImageIndex, setNextImageIndex] = useState(imageIndex + 1);
   const imageProfile = users[imageIndex];
   const nextImageProfile = users[nextImageIndex];
+  const [likeGirlIndex, setLikeGirlIndex] = useState([]);
+  const likeGirlProfile = users[likeGirlIndex]
 
   const translateX = useSharedValue(0);
   const rotate = useDerivedValue(
-    () => interpolate(translateX.value, [0, hiddenTranslateX], [0, 60]) + 'deg',
+    () =>
+      interpolate(
+        translateX.value,
+        [-hiddenTranslateX, 0, hiddenTranslateX],
+        [-60, 0, 60],
+      ) + 'deg',
   );
 
   const imageStyle = useAnimatedStyle(() => ({
@@ -61,28 +70,64 @@ export default HomeScreen = () => {
     opacity: interpolate(translateX.value, [0, -hiddenTranslateX / 6], [0, 1]),
   }));
 
+  const dispatc = useDispatch()
+
+  // const like = (usersIndex, isRight) => {
+  //   if (isRight) {
+  //     const newLikeGirlIndex = likeGirlIndex;
+  //     newLikeGirlIndex.push(usersIndex);
+  //     setLikeGirlIndex(newLikeGirlIndex);
+  //     dispatc(addLike({likeUser: likeGirlIndex}))
+  //   }
+  //   setImageIndex(usersIndex + 1);
+  //   console.log('likelike!!!!!!!!!', likeGirlIndex);
+  // };
+
+  const like = (usersIndex, isRight) => {
+    if (isRight) {
+      const newLikeGirlIndex = likeGirlIndex;
+      newLikeGirlIndex.push(usersIndex);
+      setLikeGirlIndex(newLikeGirlIndex);
+      dispatc(addLike({likeUser: likeGirlIndex}))
+    }
+    setImageIndex(usersIndex + 1);
+    console.log('likelike!!!!!!!!!', likeGirlIndex);
+  };
+
   const gestureHandler = useAnimatedGestureHandler({
-    onstart: event => {},
     onActive: event => {
       translateX.value = event.translationX;
     },
     onEnd: event => {
-      if (event.velocityX < 800) {
+      if (Math.abs(event.velocityX) < 800) {
         translateX.value = withSpring(0);
-      } else {
-        translateX.value = withSpring(
-          event.velocityX > 0 ? hiddenTranslateX : -hiddenTranslateX,
-          {},
-          () => runOnJS(setImageIndex)(imageIndex + 1),
-        );
+        return;
       }
+      const isRight = event.velocityX > 0;
+
+      translateX.value = withSpring(
+        event.velocityX > 0 ? hiddenTranslateX : -hiddenTranslateX,
+        {},
+        () => runOnJS(like)(imageIndex, isRight),
+      );
     },
   });
+
+  //HomeScreenコンポーネントの82行目でgestureHandlerの変数にimageのアニメーションを定義しています。
+  //gesturehandlerの変数の中にonEnd eventを定義しています。
+  //そのonEnd event内、96行目にてlike(imageIndex, isRight)関数を定義しており、引数isRightがtrueで返したuserのindexを、新しい配列
+  // likeGirlIndexとして返しています。
+  // その配列likeGirlIndexをLikeKeepScreenコンポーネント上で展開し、userのimageを表示させてください。
+
+  // likeGirlIndexのstateをLikeKeepScreenコンポーネントに渡して、userのimageを表示させる。
+  //
 
   useEffect(() => {
     translateX.value = 0;
     setNextImageIndex(imageIndex + 1);
   }, [imageIndex, translateX]);
+
+  // const dispatc = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -122,9 +167,9 @@ const styles = StyleSheet.create({
   },
   animatedImage: {
     width: '100%',
-    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
   },
   nextImageContainer: {
     ...StyleSheet.absoluteFillObject,
