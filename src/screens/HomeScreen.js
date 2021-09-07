@@ -24,8 +24,6 @@ export default HomeScreen = () => {
   const [nextImageIndex, setNextImageIndex] = useState(imageIndex + 1);
   const imageProfile = users[imageIndex];
   const nextImageProfile = users[nextImageIndex];
-  const [likeGirlIndex, setLikeGirlIndex] = useState([]);
-  const likeGirlProfile = users[likeGirlIndex]
 
   const translateX = useSharedValue(0);
   const rotate = useDerivedValue(
@@ -72,26 +70,11 @@ export default HomeScreen = () => {
 
   const dispatc = useDispatch()
 
-  // const like = (usersIndex, isRight) => {
-  //   if (isRight) {
-  //     const newLikeGirlIndex = likeGirlIndex;
-  //     newLikeGirlIndex.push(usersIndex);
-  //     setLikeGirlIndex(newLikeGirlIndex);
-  //     dispatc(addLike({likeUser: likeGirlIndex}))
-  //   }
-  //   setImageIndex(usersIndex + 1);
-  //   console.log('likelike!!!!!!!!!', likeGirlIndex);
-  // };
-
   const like = (usersIndex, isRight) => {
     if (isRight) {
-      const newLikeGirlIndex = likeGirlIndex;
-      newLikeGirlIndex.push(usersIndex);
-      setLikeGirlIndex(newLikeGirlIndex);
-      dispatc(addLike({likeUser: likeGirlIndex}))
+      dispatc(addLike({likeUser: imageProfile}))
     }
     setImageIndex(usersIndex + 1);
-    console.log('likelike!!!!!!!!!', likeGirlIndex);
   };
 
   const gestureHandler = useAnimatedGestureHandler({

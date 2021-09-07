@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView, Image, FlatList} from 'react-native';
-import users from '../../assets/data/users';
+import {View, Text, StyleSheet, SafeAreaView, Image, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux'
 
 export default LikeKeepScreen = () => {
@@ -14,13 +13,15 @@ export default LikeKeepScreen = () => {
         <Text style={{fontWeight: 'bold', fontSize: 24, color: '#F63A6E'}}>
           New Matches
         </Text>
-        <View style={styles.users} data={likeUsers}>
-          {likeUsers.map(user => (
-            <View style={styles.user} key={user.id}>
-              <Image source={{uri: user.image}} style={styles.image} />
-            </View>
-          ))}
-        </View>
+        <ScrollView>
+          <View style={styles.users} data={likeUsers}>
+            {likeUsers.map(users => (
+              <View style={styles.user} key={users.id}>
+                <Image source={{uri: users.image}} style={styles.image} />
+              </View>
+            ))}
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
