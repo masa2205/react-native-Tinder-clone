@@ -14,31 +14,82 @@ $ react-native init <プロジェクト名>
 cd <プロジェクト名>
 npx react-native run-ios
 ```
+<br>
 
 ---
 
-BottomBar 作成
+### ImageBottomBar 作成
 
 ---
 
-アイコンを表示させ、タップした際に画面遷移させる実装
+<br>
+
+アプリ内下部にアイコンを配置し、アイコンをタップした際にそれぞれの画面へ遷移するように実装しました。
+<br>
+遷移先はアイコン左から
+- HomeScreen(ホーム画面)
+- LikeKeepScreen(Likeした女性の一覧画面)
+- ChatScreen(チャット画面)
+- ProfileScreen(自身のプロフィール画面)
+<br>
+
+上記4つになります。
+
+<br>
+
+<手順>
+
+アイコンを表示させるために`vector-icons`ライブラリーを追加し、`FontAwesome`で設定しました。
+
+`vector-icons`ライブラリーのインストール、使用手順は
 
 ```
 $ npm install react-native-vector-icons
 
 cd ios
 pod install
+
++ import Icon from 'react-native-vector-icons/FontAwesome';
+```
+となります。
+<br>
+後々のreact-nativeのライブラリーインストール、使用手順は上記と変わらないので、下記では割愛致します。
+
+<br>
+
+```js
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+export default ImageBottomBar = () => {
+  return (
+    <View>
+      <View style={styles.buttonContainer}>
+          <Icon name="refresh" color="yellow" size={30} style={styles.icon} />
+          <Icon name="times" color="#F06795" size={50} style={styles.icon} />
+          <Icon name="star" color="blue" size={30} style={styles.icon} />
+          <Icon name="heart" color="#64EDCC" size={40} style={styles.icon} />
+          <Icon name="bolt" color="violet" size={30} style={styles.icon} />
+      </View>
+    </View>
+  );
+};
+
 ```
 
-- TouchableOpacity 追加
-- SafeAreaView 追加
+Iconタグを指定し上記のようにコードを編集しましたが、エラーが出てIconがうまく表示されませんでした。
+<br>
+エラーの内容をみてみると
+<br>
+```
+Unrecognized font family 'FontAwesome'
+```
+と出ていたので、下記で対処致しました。
+<br>
+<br>
 
-エラー
-
-- Unrecognized font family 'FontAwesome'
-  <br>
-  解決方法
-  <br>
+```
 - Xcode から ios/xcodeproj を開く
 - info.plist を開く
 - 「Add Row」で項目を追加。
@@ -49,18 +100,52 @@ pod install
 [bash]
 $ react-native run-ios
 [/bash]
+```
+
+上記でIconを表示させることができましたが、Iconをタップしても何も反応が起きません。
+そこでビューをタッチに適切に応答させるためのラッパー、`TouchableOpacity`を追加しました。
+<br>
 <br>
 
-Navigation-画面遷移-
+```js:HomeScreen.js
+import React from 'react';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
+export default ImageBottomBar = () => {
+  return (
+    <View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.reloadButton}>
+          <Icon name="refresh" color="yellow" size={30} style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.nopeButton}>
+          <Icon name="times" color="#F06795" size={50} style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.superLikeButton}>
+          <Icon name="star" color="blue" size={30} style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.likeButton}>
+          <Icon name="heart" color="#64EDCC" size={40} style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.boostButton}>
+          <Icon name="bolt" color="violet" size={30} style={styles.icon} />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 ```
-$ npm install @react-navigation/native-stack
-$ npm install react-native-gesture-handler
 
-cd ics
-pod install
-```
+これでImageBottomBarの実装は終了です。
 
-```
-$ npm install react-native-reanimated@next
-```
+<br>
+
+---
+### MainImage 作成
+
+---
+
+<br>
+
+続いてHome画面の女性の画像を反映させるコンポーネントを作成します。
