@@ -96,21 +96,10 @@ export default HomeScreen = () => {
     },
   });
 
-  //HomeScreenコンポーネントの82行目でgestureHandlerの変数にimageのアニメーションを定義しています。
-  //gesturehandlerの変数の中にonEnd eventを定義しています。
-  //そのonEnd event内、96行目にてlike(imageIndex, isRight)関数を定義しており、引数isRightがtrueで返したuserのindexを、新しい配列
-  // likeGirlIndexとして返しています。
-  // その配列likeGirlIndexをLikeKeepScreenコンポーネント上で展開し、userのimageを表示させてください。
-
-  // likeGirlIndexのstateをLikeKeepScreenコンポーネントに渡して、userのimageを表示させる。
-  //
-
   useEffect(() => {
     translateX.value = 0;
     setNextImageIndex(imageIndex + 1);
   }, [imageIndex, translateX]);
-
-  // const dispatc = useDispatch();
 
   return (
     <View style={styles.container}>
