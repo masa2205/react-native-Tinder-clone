@@ -99,6 +99,7 @@ $ brew cask install adoptopenjdk8
 <br>
 下記のリンクを押してアンドロイドスタジオのサイトに移動して、インストールファイルをダウンロードします。
 <br>
+
 [アンドロイドスタジオ]( https://developer.android.com/studio)
 
 <br>
@@ -141,7 +142,7 @@ Nextボタンを押して次の画面に移動します。次の画面に移動�
 <br>
 <br>
 
-1.  **アンドロイドスタジオSDK設定**
+10.  **アンドロイドスタジオSDK設定**
 
 <br>
 <br>
