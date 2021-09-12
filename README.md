@@ -65,7 +65,7 @@ TwitterやInstagram等のSNSアプリは王道すぎるなー、など思いな�
 # 環境構築手順
 
 1. **X Codeのインストール**
-- App Storeからインストール
+- App Storeからインストールします。
 - Xcodeをインストールしたら、`Command Line Tools`を設定する必要があります。Xcodeを実行して上部のメニューで`Xcode > Preferences... > Locations`を押してCommand Line Toolsが設定されたか確認します。
 
 <br>
@@ -97,12 +97,13 @@ $ brew cask install adoptopenjdk8
 ```
 8. **アンドロイドスタジオのインストール**
 <br>
-下記のリンクを押してアンドロイドスタジオのサイトに移動して、インストールファイルをダウンロード
-<br>
+下記のリンクを押してアンドロイドスタジオのサイトに移動して、インストールファイルをダウンロードします。
 <br>
 [アンドロイドスタジオ]( https://developer.android.com/studio)
+
 <br>
 <br>
+
 9. **アンドロイドスタジオの設定**
 <br>
 <br>
@@ -140,7 +141,7 @@ Nextボタンを押して次の画面に移動します。次の画面に移動�
 <br>
 <br>
 
-10. **アンドロイドスタジオSDK設定**
+1.  **アンドロイドスタジオSDK設定**
 
 <br>
 <br>
@@ -165,7 +166,7 @@ Nextボタンを押して次の画面に移動します。次の画面に移動�
 <br>
 <br>
 
-1.  **アンドロイドスタジオ環境変数設定**
+11.  **アンドロイドスタジオ環境変数設定**
 <br>
 <br>
 次はアンドロイドスタジオを環境変数に登録します。環境変数を追加するため`~/.bash_profile`ファイルまたは、`~/.zshrc`ファイルを開いて下記の内容を追加します。
@@ -212,30 +213,15 @@ Installed as /自分のアンドロイドSDKのディレクトリ/platform-tools
 <br>
 
 12. **react-nativeプロジェクトの生成**
-
-<br>
-
 ```
 $ npx react-native init ファイル名
 ```
-
-<br>
-
 13. **iOSでの確認**
-
-<br>
-
 ```
 $ cd SampleApp
 $ npm run ios
 ```
-
-<br>
-
 14. **アンドロイドでの確認**
-
-<br>
-
 ```
 $ cd SampleApp
 $ npm run android
