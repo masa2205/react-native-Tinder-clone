@@ -4,7 +4,7 @@ import {Text, View, StyleSheet} from 'react-native';
 export default Profilescreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>Coming Soon</Text>
     </View>
   );
 };
