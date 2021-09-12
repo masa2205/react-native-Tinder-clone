@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, useWindowDimensions, Image} from 'react-native';
+import {View, StyleSheet, useWindowDimensions} from 'react-native';
 import MainImage from '../components/MainImage';
 import users from '../../assets/data/users';
 import Like from '../../assets/images/LIKE.png';
 import Nope from '../../assets/images/nope.png';
 import Animated, {
   useSharedValue,
-  useAnimatedStyle,
+  useAnimatedStyle, //共有値とビュープロパティを関連付けるhook
   withSpring,
-  useAnimatedGestureHandler,
-  interpolate,
-  useDerivedValue,
+  useAnimatedGestureHandler, // ジェスチャを処理するプロセスで機能するワークレットハンドラーを定義できる。引数にonStart、onActive、onEnd、onFail、onCancel、onFinish。
+  interpolate, // 補間。useSharedValueをアニメーションしやすい値に補間するためのapi e.g. shared valueが0から1にアニメーションし、interpolateによって0から360に補間してrotateの角度をアニメーションさせる
+  useDerivedValue, //1つ以上の他の共有値の更新に応じて変更できる共有値参照を作成
   runOnJS,
 } from 'react-native-reanimated';
-import {PanGestureHandler} from 'react-native-gesture-handler';
+import {PanGestureHandler} from 'react-native-gesture-handler'; // パン（ドラッグ）ジェスチャを認識し、その動きを追跡できる連続ジェスチャハンドラ。ハンドラーは、指が画面に置かれ、初期距離を移動するとアクティブになる。
 import {useDispatch} from 'react-redux';
 import {addLike} from '../../store/actions/user';
 
@@ -25,11 +25,11 @@ export default HomeScreen = () => {
   const imageProfile = users[imageIndex];
   const nextImageProfile = users[nextImageIndex];
 
-  const translateX = useSharedValue(0);
+  const translateX = useSharedValue(0); //共有値
   const rotate = useDerivedValue(
     () =>
       interpolate(
-        translateX.value,
+        translateX.value, // 共有値からアクセス
         [-hiddenTranslateX, 0, hiddenTranslateX],
         [-60, 0, 60],
       ) + 'deg',
