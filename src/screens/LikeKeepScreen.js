@@ -18,6 +18,7 @@ export default LikeKeepScreen = () => {
             {likeUsers.map(users => (
               <View style={styles.user} key={users.id}>
                 <Image source={{uri: users.image}} style={styles.image} />
+                <Text>{users.name}</Text>
               </View>
             ))}
           </View>
